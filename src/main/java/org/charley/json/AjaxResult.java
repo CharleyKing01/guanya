@@ -1,9 +1,9 @@
 package org.charley.json;
 
 /**
- * @author JE哥
- * @email 1272434821@qq.com
- * @description:返回的json对象
+ *  @author：linqiaoli
+ *  @Date 2018/1/5 22:18
+ *  @Description：
  */
 public class AjaxResult {
   private static final String OK = "ok";

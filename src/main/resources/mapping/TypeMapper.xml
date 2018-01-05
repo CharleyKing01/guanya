@@ -15,10 +15,15 @@
   <sql id="Base_Column_List" >
     id, sort, en_name, name, url, create_user, create_time, update_user, update_time
   </sql>
-  <select id="selectAllType" resultMap="BaseResultMap">
+  <select id="selectAllType" resultMap="BaseResultMap" parameterType="org.charley.model.Type">
     select
     <include refid="Base_Column_List" />
-    from type ORDER BY id DESC
+    from type
+    WHERE 1=1
+      <if test="name != null" >
+          AND name LIKE CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+      </if>
+      ORDER BY id DESC
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

@@ -20,14 +20,25 @@ public class TypeServiceImpl implements TypeService {
      * pageSize 每页显示的数据条数
      * */
     @Override
-    public List<Type> findAllType(int pageNum, int pageSize) {
+    public List<Type> findAllType(int pageNum, int pageSize,Type type) {
         //将参数传给这个方法就可以实现物理分页了，非常简单。
         PageHelper.startPage(pageNum, pageSize);
-        return typeMapper.selectAllType();
+        return typeMapper.selectAllType(type);
     }
 
     @Override
     public int insert(Type type){
         return typeMapper.insert(type);
     }
+
+    @Override
+    public int updateByPrimaryKey(Type type){
+        return typeMapper.updateByPrimaryKey(type);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id){
+        return typeMapper.deleteByPrimaryKey(id);
+    }
+
 }

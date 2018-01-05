@@ -2,6 +2,7 @@ package org.charley.service.impl;
 import com.github.pagehelper.PageHelper;
 import org.charley.mapper.NewsMapper;
 import org.charley.model.News;
+import org.charley.model.Type;
 import org.charley.model.User;
 import org.charley.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,24 @@ public class NewsServiceImpl implements NewsService {
      * pageSize 每页显示的数据条数
      * */
     @Override
-    public List<News> findAllNews(int pageNum, int pageSize) {
+    public List<News> findAllNews(int pageNum, int pageSize,News news) {
         //将参数传给这个方法就可以实现物理分页了，非常简单。
         PageHelper.startPage(pageNum, pageSize);
-        return newsMapper.selectAllNews();
+        return newsMapper.selectAllNews(news);
+    }
+
+    @Override
+    public int insert(News news){
+        return newsMapper.insert(news);
+    }
+
+    @Override
+    public int updateByPrimaryKey(News news){
+        return newsMapper.updateByPrimaryKey(news);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id){
+        return newsMapper.deleteByPrimaryKey(id);
     }
 }

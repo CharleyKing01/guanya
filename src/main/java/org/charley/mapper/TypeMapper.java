@@ -15,5 +15,5 @@ public interface TypeMapper {
 
     int updateByPrimaryKey(Type record);
 
-    List<Type> selectAllType();
+    List<Type> selectAllType(Type type);
 }

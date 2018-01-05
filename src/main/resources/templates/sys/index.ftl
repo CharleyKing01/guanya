@@ -1,177 +1,125 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head id="Head1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>冠亚集团后台管理</title>
-    <link href="/static/sys/css/default.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/static/sys/js/themes/default/easyui.css" />
-    <link rel="stylesheet" type="text/css" href="/static/sys/js/themes/icon.css" />
-    <script type="text/javascript" src="/static/sys/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="/static/sys/js/jquery.easyui.min.1.2.2.js"></script>
-    <script type="text/javascript" src='/static/sys/js/outlook2.js'> </script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>冠亚集团</title>
+    <link rel="stylesheet" type="text/css" href="/static/sys/js/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/static/sys/js/easyui/themes/icon.css">
+    <script type="text/javascript" src="/static/sys/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="/static/sys/js/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript">
-        var _menus = {"menus":[
-                {
-                  "menuid":"1","icon":"icon-sys","menuname":"员工管理",
-                  "menus":[
-                            {"menuid":"11","menuname":"员工列表","icon":"icon-nav","url":"demo.html"}
-                          ]
-                },
-                {
-                    "menuid":"2","icon":"icon-sys","menuname":"新闻管理",
-                    "menus":[
-                        {"menuid":"21","menuname":"新闻列表","icon":"icon-nav","url":"demo.html"}
-                    ]
-                },
-                {
-                    "menuid":"3","icon":"icon-sys","menuname":"类别管理",
-                    "menus":[
-                        {"menuid":"31","menuname":"类别列表","icon":"icon-nav","url":"/sys/type/list.do"}
-                    ]
-                },
-            ]};
-        //设置登录窗口
-        function openPwd() {
-            $('#w').window({
-                title: '修改密码',
-                width: 300,
-                modal: true,
-                shadow: true,
-                closed: true,
-                height: 160,
-                resizable:false
+        $(function(){
+            $('#userManageTree').tree({
+                data: [{
+                    "id":1,
+                    "text":"用户",
+                    "attributes": "/user/user.jsp"
+                }
+                ],
+                onClick: function(node){
+                    var item = {text: node.text, id: node.id, href: node.attributes}
+                    addTab(item, true);
+                }
             });
-        }
-        //关闭登录窗口
-        function closePwd() {
-            $('#w').window('close');
-        }
-
-
-
-        //修改密码
-        function serverLogin() {
-            var $newpass = $('#txtNewPass');
-            var $rePass = $('#txtRePass');
-
-            if ($newpass.val() == '') {
-                msgShow('系统提示', '请输入密码！', 'warning');
-                return false;
-            }
-            if ($rePass.val() == '') {
-                msgShow('系统提示', '请在一次输入密码！', 'warning');
-                return false;
-            }
-
-            if ($newpass.val() != $rePass.val()) {
-                msgShow('系统提示', '两次密码不一至！请重新输入', 'warning');
-                return false;
-            }
-
-            $.post('/ajax/editpassword.ashx?newpass=' + $newpass.val(), function(msg) {
-                msgShow('系统提示', '恭喜，密码修改成功！<br>您的新密码为：' + msg, 'info');
-                $newpass.val('');
-                $rePass.val('');
-                close();
-            })
-
-        }
-
-        $(function() {
-
-            openPwd();
-
-            $('#editpass').click(function() {
-                $('#w').window('open');
+            $('#typeManageTree').tree({
+                data: [{
+                    "id":1,
+                    "text":"类别",
+                    "attributes": "/sys/type/list.do"
+                }
+                ],
+                onClick: function(node){
+                    var item = {text: node.text, id: node.id, href: node.attributes}
+                    addTab(item, true);
+                }
             });
-
-            $('#btnEp').click(function() {
-                serverLogin();
-            })
-
-            $('#btnCancel').click(function(){closePwd();})
-
-            $('#loginOut').click(function() {
-                $.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
-
-                    if (r) {
-                        location.href = '/ajax/loginout.ashx';
-                    }
-                });
-            })
-        });
-
+            $('#newsManageTree').tree({
+                data: [{
+                    "id":1,
+                    "text":"新闻",
+                    "attributes": "/sys/news/list.do"
+                }],
+                onClick: function(node){
+                    var item = {text: node.text, id: node.id, href: node.attributes}
+                    addTab(item, true);
+                }
+            });
+        })
 
 
     </script>
-
 </head>
-<body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
-<noscript>
-    <div style=" position:absolute; z-index:100000; height:2046px;top:0px;left:0px; width:100%; background:white; text-align:center;">
-        <img src="/static/sys/images/noscript.gif" alt='抱歉，请开启脚本支持！' />
-    </div></noscript>
-<div region="north" split="true" border="false" style="overflow: hidden; height: 40px;
-        background: url(/static/sys/images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
-        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-    <span style="float:right; padding-right:20px;" class="head">欢迎 Charley <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
-    <span style="padding-left:10px; font-size: 16px;"><img src="/static/sys/images/logo.jpg" width="149" height="35" align="absmiddle" style="margin-right: 25px; "/>冠亚集团后台管理系统</span>
-</div>
-<div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
-    <div class="footer">By Charley 18750234239</div>
-</div>
-<div region="west" hide="true" split="true" title="导航菜单" style="width:180px;" id="west">
-    <div id="nav" class="easyui-accordion" fit="true" border="false">
-        <!--  导航内容 -->
+<body class="easyui-layout">
+<div data-options="region:'north'" style="height:80px; overflow: hidden;">
+    <div style="text-align: right;">
+        <center style="font-size: 30px; font-weight: bolder; line-height: 80px;vertical-align: middle;">冠亚集团</center>
+        <a href="javascript:exit()"><p style="margin-top: -25px;margin-right: 100px;font-weight: bolder;">安全退出</p></a>
     </div>
-
 </div>
-<div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
-    <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
-        <div title="欢迎使用" style="padding:20px;overflow:hidden; color:red; " >
-            <h1>欢迎使用</h1>
+<div data-options="region:'west',title:'功能菜单',split:true" style="width:180px;">
+    <div id="menu" class="easyui-accordion" data-options="border: false, multiple: false, fit:false, width: 170, height: 250">
+        <div title="用户管理">
+            <ul id="userManageTree">
+            </ul>
+        </div>
+        <div title="类别管理">
+            <ul id="typeManageTree">
+            </ul>
+        </div>
+        <div title="新闻管理">
+            <ul id="newsManageTree">
+            </ul>
         </div>
     </div>
 </div>
+<div data-options="region:'center',title:''" style="background:#eee;">
+    <div data-options="fit:true, border:false" id="tabs" class="easyui-tabs">
 
-
-<!--修改密码窗口-->
-<div id="w" class="easyui-window" title="修改密码" collapsible="false" minimizable="false"
-     maximizable="false" icon="icon-save"  style="width: 300px; height: 150px; padding: 5px;
-        background: #fafafa;">
-    <div class="easyui-layout" fit="true">
-        <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
-            <table cellpadding=3>
-                <tr>
-                    <td>新密码：</td>
-                    <td><input id="txtNewPass" type="Password" class="txt01" /></td>
-                </tr>
-                <tr>
-                    <td>确认密码：</td>
-                    <td><input id="txtRePass" type="Password" class="txt01" /></td>
-                </tr>
-            </table>
-        </div>
-        <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
-            <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)" >
-                确定</a> <a id="btnCancel" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
-        </div>
     </div>
 </div>
+<script type="text/javascript">
 
-<div id="mm" class="easyui-menu" style="width:150px;">
-    <div id="mm-tabupdate">刷新</div>
-    <div class="menu-sep"></div>
-    <div id="mm-tabclose">关闭</div>
-    <div id="mm-tabcloseall">全部关闭</div>
-    <div id="mm-tabcloseother">除此之外全部关闭</div>
-    <div class="menu-sep"></div>
-    <div id="mm-tabcloseright">当前页右侧全部关闭</div>
-    <div id="mm-tabcloseleft">当前页左侧全部关闭</div>
-    <div class="menu-sep"></div>
-    <div id="mm-exit">退出</div>
-</div>
+    function addTab(item, closable) {
+        if ($('#tabs').tabs('exists', item.text)) {
+            $('#tabs').tabs('select', item.text);//选中
+        } else {
+            var content = createFrame(item.href, item.id);
+            $('#tabs').tabs('add', {
+                title : item.text,
+                content : content,
+                closable : closable
+            });
+        }
+        tabClose();
+    }
 
+    function createFrame(url, id) {
+        var s = '<iframe id="iframe' + id + '" scrolling="no" frameborder="0"  src="' + url + '" style="width:100%;height:99%;"></iframe>';
+        return s;
+    }
 
+    function tabClose() {
+        /*双击关闭TAB选项卡*/
+        $(".tabs-inner").dblclick(function() {
+            var subtitle = $(this).children(".tabs-closable").text();
+            $('#tabs').tabs('close', subtitle);
+        });
+    }
+
+    function exit(){
+        $.ajax({
+            url:"/sysUser/exit.action",
+            dataType : "json",
+            type: "POST",
+            success : function(data){
+                if(data==1){
+                    window.location.href="/login.jsp";
+                } else {
+                    alert("系统异常，请联系管理员！");
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

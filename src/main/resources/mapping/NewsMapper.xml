@@ -24,12 +24,16 @@
   <sql id="Blob_Column_List" >
     content
   </sql>
-  <select id="selectAllNews" resultMap="BaseResultMap">
+  <select id="selectAllNews" resultMap="BaseResultMap" parameterType="org.charley.model.News">
     select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from news
+    a.id, a.type, a.title, a.author,a.content, a.keywords, a.publish_user, a.publish_time, a.create_user, a.create_time,
+    a.update_user, a.update_time,b.name AS typeName
+    from news a LEFT JOIN type b ON a.type = b.id
+    WHERE 1=1
+    <if test="title != null" >
+      AND title LIKE CONCAT('%',#{title,jdbcType=VARCHAR},'%')
+    </if>
+    ORDER BY id DESC
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
@@ -199,7 +203,8 @@
       create_user = #{createUser,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
