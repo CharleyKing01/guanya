@@ -157,7 +157,7 @@
             </tr>
             <tr>
                 <td>链接地址:</td>
-                <td><input id="url" class="easyui-textbox" type="text" name="url" data-options="required:true"></input></td>
+                <td><input id="url" class="easyui-textbox" type="text" name="url" data-options="required:false"></input></td>
             </tr>
         </table>
     </form>

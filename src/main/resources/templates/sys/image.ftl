@@ -149,11 +149,11 @@
             </tr>
             <tr>
                 <td><div id="p1">上传图片:</div></td>
-                <td><div id="p2"><input id="imgUrlUpload" class="easyui-filebox" name="imgUrlUpload" style="width: 170px" data-options="required:false"></input></div></td>
+                <td><div id="p2"><input id="imgUrlUpload" class="easyui-filebox" name="imgUrlUpload" style="width: 170px" data-options="required:true"></input></div></td>
             </tr>
             <tr>
                 <td style="line-height: 40px">备注:</td>
-                <td><input id="remark" class="easyui-textbox" type="text" name="remark" data-options="required:false" data-options="multiline:true" style="height:100px;"></input></td>
+                <td><input id="remark" class="easyui-textbox" type="text" name="remark" data-options="required:false" data-options="multiline:false" style="height:100px;"></input></td>
             </tr>
         </table>
     </form>
