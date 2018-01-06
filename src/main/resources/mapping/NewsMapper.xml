@@ -31,9 +31,9 @@
     from news a LEFT JOIN type b ON a.type = b.id
     WHERE 1=1
     <if test="title != null" >
-      AND title LIKE CONCAT('%',#{title,jdbcType=VARCHAR},'%')
+      AND a.title LIKE CONCAT('%',#{title,jdbcType=VARCHAR},'%')
     </if>
-    ORDER BY id DESC
+    ORDER BY a.id DESC
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 

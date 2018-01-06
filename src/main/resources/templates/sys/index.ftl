@@ -33,6 +33,18 @@
                     addTab(item, true);
                 }
             });
+            $('#imageManageTree').tree({
+                data: [{
+                    "id":1,
+                    "text":"图片",
+                    "attributes": "/sys/image/list.do"
+                }
+                ],
+                onClick: function(node){
+                    var item = {text: node.text, id: node.id, href: node.attributes}
+                    addTab(item, true);
+                }
+            });
             $('#newsManageTree').tree({
                 data: [{
                     "id":1,
@@ -64,6 +76,10 @@
         </div>
         <div title="类别管理">
             <ul id="typeManageTree">
+            </ul>
+        </div>
+        <div title="图片管理">
+            <ul id="imageManageTree">
             </ul>
         </div>
         <div title="新闻管理">
