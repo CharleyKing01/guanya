@@ -111,11 +111,11 @@ body {height:auto; +overflow:hidden;}
         .redian .r-wrap .caifu h1 { height:43px;color: #505960; font-size: 18px; margin-bottom: 15px; line-height: 22px; }
         .redian .r-wrap .caifu p { color: #858585; font-size: 13px; line-height: 22px; }
 
-        .redian .r-wrap .news-1 { float: left; margin-left: 30px; width: 600px; }
+        .redian .r-wrap .news-1 { float: left; margin-left: 30px; width: 600px;height: 110px; }
         .news-1 .tab-nav { overflow: hidden; border-bottom: 2px solid #dedfe2; }
         .news-1 .tab-nav li {font-weight:bold; cursor: pointer; float: left; display: inline-block; margin: 0px 25px 20px 0; color: #747474; font-size: 13px; width: 55px; }
 
-        .news-1 .tab-box { margin-top: 20px; }
+        .news-1 .tab-box { margin-top: 10px; }
         .news-1 .tab-box p { color: #858585; font-size: 13px; line-height: 23px; }
         .news-1 .tab-box p i { float: left; font-style: normal; margin-right: 13px; }
 

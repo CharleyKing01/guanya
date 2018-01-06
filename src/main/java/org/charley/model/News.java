@@ -1,5 +1,7 @@
 package org.charley.model;
 
+import org.charley.util.CommonDateParseUtil;
+
 import java.util.Date;
 
 public class News {
@@ -27,7 +29,12 @@ public class News {
 
     private String content;
 
+    /**
+     *  临时属性
+     */
     private String typeName;
+
+    private String createTimeStr;
 
     public Integer getId() {
         return id;
@@ -131,5 +138,18 @@ public class News {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public String getCreateTimeStr() {
+        if(null != getCreateTime()){
+            return CommonDateParseUtil.date2string(getCreateTime(),"yyyy.MM.dd");
+        }else{
+            return "";
+        }
+
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
     }
 }

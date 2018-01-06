@@ -84,7 +84,7 @@ public class SysImageController {
         try {
             FileUtil.uploadFile(file.getBytes(), filePath, fileName);
             image.setName(fileName);
-            image.setUrl("http://localhost:8080/static/upload/"+fileName);
+            image.setUrl("http://127.0.0.1:8080/static/upload/"+fileName);
             image.setUpdateUser("系统管理员");
             image.setUpdateTime(new Date());
             return String.valueOf(imageService.updateByPrimaryKey(image));

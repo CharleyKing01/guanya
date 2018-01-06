@@ -153,15 +153,11 @@
 
     <div id="banner">
         <ul class="pics">
-            <li class="b1" style="background-image" ><img src="/static/front/images/banner.png"/><a target="_blank" href="http://www.vanke.com/news.aspx?type=8&id=5305"></a></li>
-
-            <li class="b2" style="background-image" ><img src="/static/front/images/banner2.png"/><a target="_blank" href="http://www.vanke.com/news.aspx?type=8&id=5305"></a></li>
-
-            <li class="b3" style="background-image" ><img src="/static/front/images/banner3.png"/><a href="citizenship.aspx?type=18&id=4719"></a></li>
-
-            <li class="b4" style="background-image" ><img src="/static/front/images/banner2.png"/><a target="_blank" href="http://life.vanke.com/"></a></li>
-
-            <li class="b5" style="background-image" ><img src="/static/front/images/banner4.png"/><a ></a></li>
+        <#list imageList as image>
+                <#if image.typeName == '旗帜图片'>
+                    <li class="b1" style="background-image" ><img src="${image.url}"/><a target="_blank" href="#"></a></li>
+                </#if>
+        </#list>
         </ul>
         <div class="btns">
             <a class="prev" href="javascript:void(0);"><span class="off"></span><span class="on"></span></a>
@@ -169,7 +165,11 @@
         </div>
         <div class="g-wrap">
             <ul class="idxs">
-                <li></li><li></li><li></li><li></li><li></li>
+                <#list imageList as image>
+                <#if image.typeName == '旗帜图片'>
+                    <li></li>
+                </#if>
+                </#list>
             </ul>
         </div>
     </div>
@@ -180,51 +180,32 @@
         <div class="r-wrap">
 
             <div class="caifu">
-                <a href="news.aspx?type=31&id=5355">
-                    <h1>冠亚集团</h1>
-                    <p>冠亚集团</p>
+                <a href="#">
+                    <h1>${specialNews.title}</h1>
+                    <p>${specialNews.content}</p>
                 </a>
             </div>
             <div class="news-1">
                 <ul class="tab-nav tab1">
-                    <li>集团新闻</li>
-                    <li>地方动态 </li>
-                    <li>媒体报道</li>
+                    <#list typeList as type>
+                        <li>${type.name}</li>
+                    </#list>
                 </ul>
                 <div class="xian"></div>
-                <div class="tab-box">
-                    <a href="news.aspx?type=8&id=5322">
-                        <p><i>2017.11.17 </i>冠亚集团 </p>
-                    </a>
-                    <a href="news.aspx?type=8&id=5307">
-                        <p><i>2017.10.29 </i>冠亚集团</p>
-                    </a>
-                    <a href="news.aspx?type=8&id=5305">
-                        <p><i>2017.10.27 </i>冠亚集团 </p>
-                    </a>
-                </div>
-                <div class="tab-box none">
-                    <a href="news.aspx?type=9&id=5283">
-                        <p><i>2017.10.12 </i>冠亚集团 </p>
-                    </a>
-                    <a href="news.aspx?type=9&id=5286">
-                        <p><i>2017.09.29 </i>冠亚集团 </p>
-                    </a>
-                    <a href="news.aspx?type=9&id=5224">
-                        <p><i>2017.08.03 </i>冠亚集团 </p>
-                    </a>
-                </div>
-                <div class="tab-box none">
-                    <a href="news.aspx?type=31&id=5355">
-                        <p><i>2018.01.05 </i>冠亚集团 </p>
-                    </a>
-                    <a href="news.aspx?type=31&id=5354">
-                        <p><i>2017.12.15 </i>冠亚集团 </p>
-                    </a>
-                    <a href="news.aspx?type=31&id=5340">
-                        <p><i>2017.12.15 </i>冠亚集团 </p>
-                    </a>
-                </div>
+
+                <#list typeList as type>
+                    <div class="tab-box">
+                        <#list newsList as news>
+                            <#if type.name == news.typeName>
+                                <a href="#">
+                                    <p><i>${news.createTimeStr}</i>${news.title}</p>
+                                </a>
+                            </#if>
+                        </#list>
+                    </div>
+                </#list>
+
+
             </div>
             <div class="stock"></div>
         </div>
