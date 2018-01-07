@@ -9,18 +9,7 @@
     <script type="text/javascript" src="/static/sys/js/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('#userManageTree').tree({
-                data: [{
-                    "id":1,
-                    "text":"用户",
-                    "attributes": "/user/user.jsp"
-                }
-                ],
-                onClick: function(node){
-                    var item = {text: node.text, id: node.id, href: node.attributes}
-                    addTab(item, true);
-                }
-            });
+
             $('#typeManageTree').tree({
                 data: [{
                     "id":1,
@@ -56,6 +45,23 @@
                     addTab(item, true);
                 }
             });
+            $('#sysManageTree').tree({
+                data: [{
+                    "id":1,
+                    "text":"用户",
+                    "attributes": "/user/user.jsp"
+                },
+                    {
+                        "id":2,
+                        "text":"参数设置",
+                        "attributes": "/sys/codeTable/list.do"
+                    }
+                ],
+                onClick: function(node){
+                    var item = {text: node.text, id: node.id, href: node.attributes}
+                    addTab(item, true);
+                }
+            });
         })
 
 
@@ -70,10 +76,6 @@
 </div>
 <div data-options="region:'west',title:'功能菜单',split:true" style="width:180px;">
     <div id="menu" class="easyui-accordion" data-options="border: false, multiple: false, fit:false, width: 170, height: 250">
-        <div title="用户管理">
-            <ul id="userManageTree">
-            </ul>
-        </div>
         <div title="类别管理">
             <ul id="typeManageTree">
             </ul>
@@ -84,6 +86,10 @@
         </div>
         <div title="新闻管理">
             <ul id="newsManageTree">
+            </ul>
+        </div>
+        <div title="系统管理">
+            <ul id="sysManageTree">
             </ul>
         </div>
     </div>
