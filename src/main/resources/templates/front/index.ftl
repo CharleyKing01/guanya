@@ -153,10 +153,8 @@
 
     <div id="banner">
         <ul class="pics">
-        <#list imageList as image>
-                <#if image.typeName == '旗帜图片'>
-                    <li class="b1" style="background-image" ><img src="${image.url}"/><a target="_blank" href="#"></a></li>
-                </#if>
+        <#list topImageList as image>
+            <li class="b1" style="background-image" ><img src="${image.url}"/><a target="_blank" href="#"></a></li>
         </#list>
         </ul>
         <div class="btns">
@@ -165,10 +163,8 @@
         </div>
         <div class="g-wrap">
             <ul class="idxs">
-                <#list imageList as image>
-                <#if image.typeName == '旗帜图片'>
+                <#list topImageList as image>
                     <li></li>
-                </#if>
                 </#list>
             </ul>
         </div>
@@ -182,7 +178,9 @@
             <div class="caifu">
                 <a href="#">
                     <h1>${specialNews.title}</h1>
-                    <p>${specialNews.content}</p>
+                    <p class="focus-content">
+                        ${specialNews.content}
+                    </p>
                 </a>
             </div>
             <div class="news-1">
@@ -194,7 +192,11 @@
                 <div class="xian"></div>
 
                 <#list typeList as type>
-                    <div class="tab-box">
+                    <#if type_index == 0>
+                        <div class="tab-box" style="display: block">
+                    <#else>
+                        <div class="tab-box" style="display: none">
+                    </#if>
                         <#list newsList as news>
                             <#if type.name == news.typeName>
                                 <a href="#">
@@ -203,6 +205,7 @@
                             </#if>
                         </#list>
                     </div>
+
                 </#list>
 
 
@@ -255,33 +258,33 @@
         <div class="g-wrap ready trans">
             <a class="item-1" target="_blank" href="">
 					<span class="p1">
-						<img src="/static/front/images/1.jpg" alt="" />
+						<img src="${bottomImage1.url}" alt="" />
 					</span>
                 <span class="p2"></span>
             </a>
             <a class="item-2" target="_blank" href="">
 					<span class="p1">
-						<img src="/static/front/images/2.jpg" alt="" />
+						<img src="${bottomImage2.url}" alt="" />
 					</span>
-                <span class="p2">
-						<img src="/static/front/images/3.jpg" alt="" />
+                    <span class="p2">
+						<img src="${bottomImage3.url}" alt="" />
 					</span>
             </a>
             <a class="item-3" target="_blank" href="">
 					<span class="p1">
-						<img src="/static/front/images/4.jpg" alt="" />
+						<img src="${bottomImage4.url}" alt="" />
 					</span>
                 <span class="p2">
-						<img src="/static/front/images/5.jpg" alt="" />
+						<img src="${bottomImage5.url}" alt="" />
 					</span>
             </a>
             <a class="item-4" target="_blank" href="">
 					<span class="p1">
-						<img src="/static/front/images/6.jpg" alt="" />
+						<img src="${bottomImage6.url}" alt="" />
 					</span>
                 <span class="p2">
-						<img src="/static/front/images/7.jpg" alt="" />
-					</span>
+                    <img src="${bottomImage7.url}" alt="" />
+                </span>
             </a>
         </div>
     </div>

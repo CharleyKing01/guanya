@@ -9,4 +9,10 @@ public interface NewsService {
     int insert(News news);
     int updateByPrimaryKey(News news);
     int deleteByPrimaryKey(Integer id);
+
+    /**
+     * 每种类型显示三条
+     * @return
+     */
+    List<News> selectByTypeThree();
 }

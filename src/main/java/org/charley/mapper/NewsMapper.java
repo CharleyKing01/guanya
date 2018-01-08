@@ -18,4 +18,6 @@ public interface NewsMapper {
     int updateByPrimaryKey(News record);
 
     List<News> selectAllNews(News news);
+
+    List<News> selectByTypeThree();
 }

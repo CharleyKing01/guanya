@@ -105,6 +105,7 @@
             $('#author').textbox('setValue',selectRow.author);
             $('#content').textbox('setValue',selectRow.content);
             $('#keywords').textbox('setValue',selectRow.keywords);
+            $('#focus').textbox('setValue',selectRow.focus);
 
             $('#ff').attr("action", "/sys/news/update-data.do");
             $('#dlg').dialog('open').dialog("setTitle", "修改新闻");
@@ -115,6 +116,12 @@
             $('#newsDg').datagrid('reload', {title: $("#searchName").textbox('getText')});
         }
 
+        function focusFormatter(value,row,index){
+            if('' != value && null != value && value == '1')
+                return "是";
+            else
+                return "否";
+        }
     </script>
 </head>
 <body>
@@ -127,6 +134,7 @@
         <th data-options="field:'title',width:110, align:'center'">标题</th>
         <th data-options="field:'author',width:110, align:'center'">作者</th>
         <th data-options="field:'content',width:110, align:'center'">内容</th>
+        <th data-options="field:'focus',width:110, align:'center' ,formatter: focusFormatter">聚焦新闻</th>
         <th data-options="field:'keywords',width:110, align:'center'">关键字</th>
     </tr>
     </thead>
@@ -170,6 +178,15 @@
             <tr>
                 <td style="line-height: 40px">关键字:</td>
                 <td><input id="keywords" class="easyui-textbox" type="text" name="keywords" data-options="required:true" style="width: 650px"></input></td>
+            </tr>
+            <tr>
+                <td style="line-height: 40px">聚焦新闻:</td>
+                <td>
+                    <select class="easyui-combobox" style="width:650px;" id="focus" name="focus">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
             </tr>
         </table>
     </form>

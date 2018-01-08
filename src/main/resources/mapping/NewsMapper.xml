@@ -6,6 +6,7 @@
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="focus" property="focus" jdbcType="CHAR" />
     <result column="keywords" property="keywords" jdbcType="VARCHAR" />
     <result column="publish_user" property="publishUser" jdbcType="VARCHAR" />
     <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
@@ -18,7 +19,7 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, type, title, author, keywords, publish_user, publish_time, create_user, create_time,
+    id, type, title,focus, author, keywords, publish_user, publish_time, create_user, create_time,
     update_user, update_time
   </sql>
   <sql id="Blob_Column_List" >
@@ -26,12 +27,18 @@
   </sql>
   <select id="selectAllNews" resultMap="BaseResultMap" parameterType="org.charley.model.News">
     select
-    a.id, a.type, a.title, a.author,a.content, a.keywords, a.publish_user, a.publish_time, a.create_user, a.create_time,
+    a.id, a.type, a.title,focus, a.author,a.content, a.keywords, a.publish_user, a.publish_time, a.create_user, a.create_time,
     a.update_user, a.update_time,b.name AS typeName
     from news a LEFT JOIN type b ON a.type = b.id
     WHERE 1=1
     <if test="title != null" >
       AND a.title LIKE CONCAT('%',#{title,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="typeName != null" >
+      AND b.name = #{typeName,jdbcType=VARCHAR}
+    </if>
+    <if test="focus != null" >
+      AND a.focus = #{focus,jdbcType=CHAR}
     </if>
     ORDER BY a.id DESC
   </select>
@@ -43,6 +50,24 @@
     from news
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByTypeThree" resultMap="BaseResultMap" parameterType="org.charley.model.News">
+    <![CDATA[
+      SELECT A1.*,T.`name` AS typeName
+        FROM news AS A1
+           INNER JOIN (SELECT A.type,A.id
+                 FROM news AS A
+                   LEFT JOIN news AS B
+                    ON A.type = B.type
+                      AND A.id <= B.id
+                 GROUP BY A.type,A.id
+                 HAVING COUNT(B.id) <= 3
+          ) AS B1
+          ON A1.type = B1.type
+            AND A1.id = B1.id
+        LEFT JOIN type T ON A1.type = T.id
+        ORDER BY A1.type desc,A1.create_time DESC
+    ]]>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from news
     where id = #{id,jdbcType=INTEGER}
@@ -51,12 +76,13 @@
     insert into news (id, type, title, 
       author, keywords, publish_user, 
       publish_time, create_user, create_time, 
-      update_user, update_time, content
+      update_user, update_time, content,focus
       )
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{author,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{publishUser,jdbcType=VARCHAR}, 
       #{publishTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR},
+      #{focus,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.charley.model.News" >
@@ -98,6 +124,9 @@
       <if test="content != null" >
         content,
       </if>
+      <if test="focus != null" >
+        focus,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -135,6 +164,9 @@
       </if>
       <if test="content != null" >
         #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="focus != null" >
+        #{focus,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -174,6 +206,9 @@
       <if test="content != null" >
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
+      <if test="focus != null" >
+        focus = #{content,jdbcType=CHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -189,7 +224,8 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=LONGVARCHAR}
+      content = #{content,jdbcType=LONGVARCHAR},
+      focus = #{focus,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.charley.model.News" >
@@ -204,7 +240,8 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=VARCHAR}
+      content = #{content,jdbcType=VARCHAR},
+      focus = #{focus,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

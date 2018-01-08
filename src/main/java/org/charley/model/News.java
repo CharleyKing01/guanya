@@ -29,6 +29,8 @@ public class News {
 
     private String content;
 
+    private String focus;
+
     /**
      *  临时属性
      */
@@ -151,5 +153,13 @@ public class News {
 
     public void setCreateTimeStr(String createTimeStr) {
         this.createTimeStr = createTimeStr;
+    }
+
+    public String getFocus() {
+        return focus;
+    }
+
+    public void setFocus(String focus) {
+        this.focus = focus;
     }
 }

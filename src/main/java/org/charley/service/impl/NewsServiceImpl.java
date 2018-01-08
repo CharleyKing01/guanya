@@ -42,4 +42,9 @@ public class NewsServiceImpl implements NewsService {
     public int deleteByPrimaryKey(Integer id){
         return newsMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<News> selectByTypeThree(){
+        return newsMapper.selectByTypeThree();
+    }
 }

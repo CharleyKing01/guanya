@@ -32,6 +32,9 @@
     <if test="name != null" >
       AND a.name LIKE CONCAT('%',#{name,jdbcType=VARCHAR},'%')
     </if>
+    <if test="typeName != null">
+      AND b.name = #{typeName}
+    </if>
     ORDER BY a.id DESC
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

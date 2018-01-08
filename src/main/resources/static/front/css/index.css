@@ -130,3 +130,11 @@ body {height:auto; +overflow:hidden;}
         .r-wrap .stock .stock-num h3 { float: left; font-size: 25px; color: #e62b1e; font-family: dincond-medium-webfont; position: absolute; left: 118px; top: 27px; }
         .r-wrap .stock .stock-num .stock-bt { width: 17px; height: 13px; background-size: 100%; display: inline-block; float: left; position: absolute; bottom: 6px; }
         .r-wrap .stock p { color: #aaacb5; font-size: 12px; }
+
+       .focus-content{position: relative; line-height: 20px; max-height: 70px;overflow: hidden;}
+       .focus-content::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+              background: -webkit-linear-gradient(left, transparent, #fff 55%);
+              background: -o-linear-gradient(right, transparent, #fff 55%);
+              background: -moz-linear-gradient(right, transparent, #fff 55%);
+              background: linear-gradient(to right, transparent, #fff 55%);
+       }
