@@ -86,12 +86,12 @@
     <div class="g-wrap">
         <a id="logo" href="index.aspx"><img src="/static/front/images/logo.png" height="48px"></a>
         <ul id="nav">
-            <li class="n1"><a href="index.aspx"><span>首页</span><span class="bkg"></span></a></li>
-            <li class="n2 more"><a href="about.aspx"><span>走进冠亚</span><span class="bkg"></span></a></li>
-            <li class="n3 more"><a href="news.aspx"><span>新闻中心</span></span><span class="bkg"></span></a></li>
-            <li class="n4 "><a href="investors.aspx"><span>企业文化</span><span class="bkg"></span></a></li>
-            <li class="n5 "><a href="javascript:;"><span>项目展示</span><span class="bkg"></span></a></li>
-            <li class="n6 more"><a href="citizenship.aspx"><span>招聘频道</span><span class="bkg"></span></a></li>
+            <li class="n1"><a href="#"><span>首页</span><span class="bkg"></span></a></li>
+            <li class="n2 more"><a href="#"><span>走进冠亚</span><span class="bkg"></span></a></li>
+            <li class="n3 more"><a href="#"><span>新闻中心</span></span><span class="bkg"></span></a></li>
+            <li class="n4 "><a href="#"><span>企业文化</span><span class="bkg"></span></a></li>
+            <li class="n5 "><a href="#"><span>项目展示</span><span class="bkg"></span></a></li>
+            <li class="n6 more"><a href="#"><span>招聘频道</span><span class="bkg"></span></a></li>
 
         </ul>
 
@@ -103,24 +103,24 @@
     <div id="subNav">
         <div class="g-wrap">
             <div class="item about">
-                <a href="about.aspx?type=3">董事长致辞<span></a><a href="about.aspx?type=5">公司荣誉<span></a><a href="about.aspx?type=6">成员企业<span></a><a href="about.aspx?type=6">大事纪要<span></a>
+                <a href="#">董事长致辞<span></a><a href="#">公司荣誉<span></a><a href="#">成员企业<span></a><a href="#">大事纪要<span></a>
             </div>
             <div class="item news">
-                <a href="news.aspx?type=8">新闻内容<span></a>
+                <a href="#">新闻内容<span></a>
             </div>
 
             <div class="item citizenship">
-                <a href="citizenship.aspx?type=18">招聘公司<span></a>
-                <a href="citizenship.aspx?type=18">招聘岗位<span></a>
-                <a href="citizenship.aspx?type=18">简历<span></a>
+                <a href="#">招聘公司<span></a>
+                <a href="#">招聘岗位<span></a>
+                <a href="#">简历<span></a>
             </div>
             <div class="item search">
                 <input id='searchbox' type="text" placeholder="请输入关键词" />
             </div>
             <div id="language-box" class="item langs">
-                <a id="on" href="../">中文简体</a>
-                <a href="/big5">中文繁体</a>
-                <a href="/en">EN</a>
+                <a id="on" href="#">中文简体</a>
+                <a href="#">中文繁体</a>
+                <a href="#">EN</a>
             </div>
             <div class="item nwmenu">
                 <div class="nwmenu-inner">
@@ -303,7 +303,7 @@
                 <a style="background-image: url(/static/front/images/refer_icon_3y.png);" href="http://www.scpgroup.com/" target="_blank">冠亚集团</a>
             </div>
             <div class="right">
-                <a target="_blank" href="http://5198.vanke.com/">廉政举报</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a target="_blank" href="wjcx/default.aspx">违纪查询</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="contact.aspx">联络冠亚</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="about.aspx?type=4">关注冠亚</a>
+                &nbsp;&nbsp;<a href="contact.aspx">联络冠亚</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="about.aspx?type=4">关注冠亚</a>
             </div>
         </div>
     </div>
