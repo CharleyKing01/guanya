@@ -9,19 +9,6 @@
     <script src="/static/front/js/uaredirect.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
     <script type="text/javascript">
-        $(function () {
-            document.getElementById('searchbox').onkeydown = function (event) {
-                var e = event || window.event || arguments.callee.caller.arguments[0];
-                if (e && e.keyCode == 13) { // enter 键
-                    if (myvalidform()) {
-                        window.location.href = "search.aspx?key=" + $("#searchbox").val() + "";
-                    } else {
-                        $('.btn-search').addClass('on');
-                    }
-                }
-            };
-
-        });
         function show() {
             alert("a");
             $(".tabs a").first().removeClass("on");
@@ -84,7 +71,7 @@
 <body>
 <div id="header">
     <div class="g-wrap">
-        <a id="logo" href="index.aspx"><img src="/static/front/images/logo.png" height="48px"></a>
+        <img src="/static/front/images/logo.png" height="48px">
         <ul id="nav">
             <li class="n1"><a href="#"><span>首页</span><span class="bkg"></span></a></li>
             <li class="n2 more"><a href="#"><span>走进冠亚</span><span class="bkg"></span></a></li>
@@ -99,33 +86,21 @@
 </div>
 
 <div id="content">
-
     <div id="subNav">
         <div class="g-wrap">
             <div class="item about">
-                <a href="#">董事长致辞<span></a><a href="#">公司荣誉<span></a><a href="#">成员企业<span></a><a href="#">大事纪要<span></a>
+                <a href="#">董事长致辞<span></a>
+                <a href="#">公司荣誉<span></a>
+                <a href="#">成员企业<span></a>
+                <a href="#">大事纪要<span></a>
             </div>
             <div class="item news">
                 <a href="#">新闻内容<span></a>
             </div>
-
             <div class="item citizenship">
                 <a href="#">招聘公司<span></a>
                 <a href="#">招聘岗位<span></a>
                 <a href="#">简历<span></a>
-            </div>
-            <div class="item search">
-                <input id='searchbox' type="text" placeholder="请输入关键词" />
-            </div>
-            <div id="language-box" class="item langs">
-                <a id="on" href="#">中文简体</a>
-                <a href="#">中文繁体</a>
-                <a href="#">EN</a>
-            </div>
-            <div class="item nwmenu">
-                <div class="nwmenu-inner">
-                    <div class="nwi-box clearfix">    <ul class="nwmenu-list">        <li><a href="http://life.vanke.com/" target="_blank">万科在线家</a></li>        <li><a href="https://www.vankeservice.com/" target="_blank">万科物业</a></li>        <li><a href="http://www.scpgroup.com/" target="_blank">印力集团</a></li>        <li><a href="http://www.lakesonghua.com/" target="_blank">万科松花湖度假区</a></li>        <li><a href="http://www.inboyu.com/" target="_blank">泊寓</a></li>        <li><a href="http://www.vanlian.cn/" target="_blank">北京万科链家装饰</a></li>        <li><a href="http&#58;&#47;&#47;vma.vanke.com" target="_blank">深圳万科梅沙书院</a></li>        <li><a href="http&#58;&#47;&#47;www.vkbs.cn&#47;en&#47;" target="_blank">上海万科双语学校</a></li>        <li><a href="http&#58;&#47;&#47;www.naradalz.com&#47;" target="_blank">杭州良渚君澜度假酒店</a></li>        <li><a href="http&#58;&#47;&#47;pdc.vanke.com&#47;" target="_blank">万科招标采购</a></li>        <li><a href="http://www.gzvankecare.com" target="_blank">万颐养老在华南</a></li>        <li><a href="http://www.gzvankehotel.com" target="_blank">花园里的鱼度假村</a></li>    </ul></div>
-                </div>
             </div>
         </div>
     </div>
@@ -171,10 +146,8 @@
     </div>
 
     <!-- 新闻滚动  新版本  8-18(hyq) start -->
-
     <div class="redian">
         <div class="r-wrap">
-
             <div class="caifu">
                 <a href="#">
                     <h1>${specialNews.title}</h1>
@@ -190,7 +163,6 @@
                     </#list>
                 </ul>
                 <div class="xian"></div>
-
                 <#list typeList as type>
                     <#if type_index == 0>
                         <div class="tab-box" style="display: block">
@@ -205,12 +177,8 @@
                             </#if>
                         </#list>
                     </div>
-
                 </#list>
-
-
             </div>
-            <div class="stock"></div>
         </div>
     </div>
 
@@ -251,66 +219,68 @@
             })
         });
     </script>
-
-
-    <!-- 新闻滚动  新版本  8-18(hyq) end -->
-    <div id="subjects">
-        <div class="g-wrap ready trans">
-            <a class="item-1" target="_blank" href="">
-					<span class="p1">
-						<img src="${bottomImage1.url}" alt="" />
-					</span>
-                <span class="p2"></span>
-            </a>
-            <a class="item-2" target="_blank" href="">
-					<span class="p1">
-						<img src="${bottomImage2.url}" alt="" />
-					</span>
-                    <span class="p2">
-						<img src="${bottomImage3.url}" alt="" />
-					</span>
-            </a>
-            <a class="item-3" target="_blank" href="">
-					<span class="p1">
-						<img src="${bottomImage4.url}" alt="" />
-					</span>
-                <span class="p2">
-						<img src="${bottomImage5.url}" alt="" />
-					</span>
-            </a>
-            <a class="item-4" target="_blank" href="">
-					<span class="p1">
-						<img src="${bottomImage6.url}" alt="" />
-					</span>
-                <span class="p2">
-                    <img src="${bottomImage7.url}" alt="" />
-                </span>
-            </a>
-        </div>
     </div>
-</div>
 
+    <!-- 新闻三张图片 -->
+    <div class="div-three-pics">
+        <#list bottomImageList as bottomImage>
+            <img class="div-three-pic-${bottomImage_index+1}" src="${bottomImage.url}"/>
+        </#list>
+    </div>
 
-<div id="footer">
-    <div id="reference">
-        <div class="g-wrap">
-            <div class="left">
-                <p>您来访的目的是了解：</p>
-                <a class="a1" href="about.aspx?type=24">冠亚集团</a>
-
-                <a class="a2" href="https://www.vankeservice.com/" target="_blank">冠亚集团 </a>
-                <a class="a3" href="http://life.vanke.com/" target="_blank">冠亚集团</a>
-                <a style="background-image: url(/static/front/images/refer_icon_3y.png);" href="http://www.scpgroup.com/" target="_blank">冠亚集团</a>
+    <div class="contact-information">
+        <div class="main-list">
+            <div class="main-list-con">
+                <h3>产品与服务</h3>
+                <h4>PRODUCTS<br>&amp;SERVICES</h4>
             </div>
-            <div class="right">
-                &nbsp;&nbsp;<a href="contact.aspx">联络冠亚</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="about.aspx?type=4">关注冠亚</a>
-            </div>
+            <ul>
+                <li class="main-list1 animated zoomIn"> <a href="#"><p>地产</p></a> </li>
+                <li class="main-list2 animated zoomIn"> <a href="#"><p>物业</p></a> </li>
+                <li class="main-list3 animated zoomIn"> <a href="#x.html"><p>酒店</p></a> </li>
+                <li class="main-list4 animated zoomIn"> <a href="#"><p>客户中心</p></a> </li>
+                <li class="main-list5 animated zoomIn"> <a href="#"><p>其他</p></a> </li>
+            </ul>
+        </div>
+        <div class="bottom_right">
+            <dl>
+                <dt>
+                    <img src="/static/front/images/t_code.jpg">关注冠亚集团微信<br>
+                    ( SCE1966hk )</dt>
+                <dd class="t1">852-24899798</dd>
+                <dd class="t2">地址： 香港新界葵涌葵昌路88号11楼<br>
+                    &nbsp;
+                </dd>
+                <dd class="t3">
+                </dd>
+            </dl>
         </div>
     </div>
 
-</div>
+    <div id="footer">
+        <a href="websitemap.aspx" target="_blank">站点地图</a><img src="/static/front/images/footerline.gif" alt="">
+        <a href="#" onclick="openwin()">法律声明</a><img src="/static/front/images/footerline.gif" alt="">
+        <a href="" target="_blank">联系我们</a><br>
+        <div>
+            <span style="vertical-align:bottom; height:47px; margin-left:15px">
+                <span style="vertical-align:bottom; height:47px; margin-left:15px">闽ICP备05017039号</span>
+                <a style="vertical-align: bottom;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502002638" target="_blank">
+                    <img style="vertical-align: bottom;" src="/static/front/images/gongan.png">闽ICP备05017039号
+                </a>
+                <a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&amp;entyId=20130530163953715">
+                    <img src="/static/front/images/icon.gif" border="0">
+                </a>
+            </span>
+        </div>
+        冠亚集团版权所有copyright © 2018<br>
+    </div>
+
+
 <div style="display: none">
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1254929906'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1254929906' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1254929906'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1254929906' type='text/javascript'%3E%3C/script%3E"));
+    </script>
 </div>
 </body>
 </html>

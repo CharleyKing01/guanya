@@ -106,12 +106,12 @@ body {height:auto; +overflow:hidden;}
 
 /*首页新闻20160818*/
  .redian { width: 100%; }
-        .redian .r-wrap { width: 1130px; margin: 0 auto; overflow: hidden; padding: 35px 0; }
-        .redian .r-wrap .caifu { float: left; width: 500px; overflow: hidden; }
+        .redian .r-wrap { width: 100%; margin: 0 auto; overflow: hidden; padding: 35px 0;display: flex;flex-direction: row;justify-content: center;}
+        .redian .r-wrap .caifu { float: left; width: 45%; overflow: hidden; }
         .redian .r-wrap .caifu h1 { height:43px;color: #505960; font-size: 18px; margin-bottom: 15px; line-height: 22px; }
         .redian .r-wrap .caifu p { color: #858585; font-size: 13px; line-height: 22px; }
 
-        .redian .r-wrap .news-1 { float: left; margin-left: 30px; width: 600px;height: 110px; }
+        .redian .r-wrap .news-1 { float: left; margin-left: 30px; width: 50%;height: 110px; }
         .news-1 .tab-nav { overflow: hidden; border-bottom: 2px solid #dedfe2; }
         .news-1 .tab-nav li {font-weight:bold; cursor: pointer; float: left; display: inline-block; margin: 0px 25px 20px 0; color: #747474; font-size: 13px; }
 
@@ -138,3 +138,63 @@ body {height:auto; +overflow:hidden;}
               background: -moz-linear-gradient(right, transparent, #fff 55%);
               background: linear-gradient(to right, transparent, #fff 55%);
        }
+
+       .div-three-pics{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              margin-top:10px;
+              width: 100%;
+              height: 188px;
+              margin-bottom: 40px;
+       }
+       .div-three-pic-1{
+              width: 36%;
+              height: 100%;
+       }
+       .div-three-pic-2{
+              width: 43%;
+              height: 100%;
+       }
+       .div-three-pic-3{
+              width: 19%;
+              height: 100%;
+       }
+
+.contact-information{
+       display: flex;
+       justify-content: space-between;
+       flex-direction: row;
+}
+
+.main-list{width:60%;height:180px;}
+.main-list .main-list-con{width:120px;height:180px;float:left;}
+.main-list .main-list-con h3{font-size:18px;color:#333333;padding:38px 0 5px 0;}
+.main-list .main-list-con h4{font-size:24px;color:#999999;font-family:'dinCond-Medium';line-height:24px;font-weight:500;}
+.main-list ul{float:right;}
+.main-list li{width:120px;height:180px;float:left;-webkit-transition:all .3ms;-moz-transition:all .3s;transition:all .3s;}
+.main-list li p{font-size:14px;color:#666666;font-weight:bold; text-align:center;padding-top:120px;-webkit-transition:all .3s;-moz-transition:all .3s;}
+.main-list li:hover{background:#f4f4f4;}
+.main-list .main-list1{animation-delay:.4s}
+.main-list .main-list2{animation-delay:.6s}
+.main-list .main-list3{animation-delay:.8s}
+.main-list .main-list4{animation-delay:1s}
+.main-list .main-list5{animation-delay:1.2s}
+.main-list .main-list6{animation-delay:1.4s}
+.main-list .main-list1 p{background:url("/static/front/images/main-list1.png") no-repeat center 50px;}
+.main-list .main-list2 p{background:url("/static/front/images/main-list2.png") no-repeat center 50px;}
+.main-list .main-list3 p{background:url("/static/front/images/main-list3.png") no-repeat center 50px;}
+.main-list .main-list4 p{background:url("/static/front/images/main-list4.png") no-repeat center 50px;}
+.main-list .main-list5 p{background:url("/static/front/images/main-list6.png") no-repeat center 50px;}
+.main-list .main-list6 p{background:url("/static/front/images/main-list6.png") no-repeat center 50px;}
+
+.bottom_right{ float:right; width:400px;}
+.bottom_right dl{ float:left; width:400px;}
+.bottom_right dl dt{ float:left; width:108px;  text-align:center; line-height:20px;}
+.bottom_right dl dt img{ display:block; padding:7px; border:#dbdbdb solid 1px; float:left; margin-bottom:5px;}
+.bottom_right dl dd{ float:left; padding-left:10px;}
+.bottom_right dl dd.t1{ font-family:"Myriad Pro"; font-size:18px; font-weight:bold; background:url(/static/front/images/icon01.jpg) no-repeat 10px center; padding-left:40px; width:215px;}
+.bottom_right dl dd.t2{ color:#666666; line-height:26px; margin-top:5px;}
+.bottom_right dl dd.t3{ line-height:40px; margin-top:5px;}
+.bottom_right dl dd.t3 img:last-child{ margin-left:10px;}
+.bottom_right dl dd.t3 img.last{ margin-left:10px;}

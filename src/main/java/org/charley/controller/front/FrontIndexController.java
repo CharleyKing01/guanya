@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -24,10 +25,12 @@ public class FrontIndexController {
     private ImageService imageService;
 
     @GetMapping("/front/index.do")
-    public ModelAndView index(){
+    public ModelAndView index(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView("front/index");
         //Gson gson=new Gson();
         //String userJson = gson.toJson(user);//把user转成json格式字符串
+        String r1 = request.getSession().getServletContext().getRealPath("");
+        String r2 = request.getRequestURL().toString();
         Type type = new Type();
         type.setSort("新闻");
         List<Type> typeList = typeService.findAllType(1,10,type);
@@ -52,15 +55,8 @@ public class FrontIndexController {
 
         Image bottomImageParam = new Image();
         bottomImageParam.setTypeName("底部图片");
-        List<Image> bottomImageList = imageService.findAllImage(1,7,bottomImageParam);
-        modelAndView.addObject("bottomImage1",bottomImageList.get(6));//图片
-        modelAndView.addObject("bottomImage2",bottomImageList.get(5));
-        modelAndView.addObject("bottomImage3",bottomImageList.get(4));
-        modelAndView.addObject("bottomImage4",bottomImageList.get(3));
-        modelAndView.addObject("bottomImage5",bottomImageList.get(2));
-        modelAndView.addObject("bottomImage6",bottomImageList.get(1));
-        modelAndView.addObject("bottomImage7",bottomImageList.get(0));
-
+        List<Image> bottomImageList = imageService.findAllImage(1,3,bottomImageParam);
+        modelAndView.addObject("bottomImageList",bottomImageList);//图片
         return modelAndView;
     }
 
