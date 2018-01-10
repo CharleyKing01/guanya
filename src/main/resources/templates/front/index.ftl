@@ -9,48 +9,7 @@
     <script src="/static/front/js/uaredirect.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
     <script type="text/javascript">
-        function show() {
-            alert("a");
-            $(".tabs a").first().removeClass("on");
-            $(".tabs a").last().addClass("on");
-            $(".conts .item item-3").show().siblings().hide();
-        }
 
-        function myvalidform() {
-            if ($("#searchbox").val() == "") {
-                $.Showmsg("请输入关键字！");
-                setTimeout(closeMsg, 1200);
-                return false;
-            }
-            if ($("#searchbox").val().length > 8) {
-                $.Showmsg("关键字不得超过8个字符!");
-                setTimeout(closeMsg, 1200);
-                return false;
-            }
-            return true;
-        }
-        function closeMsg() {
-            $.Hidemsg()
-        }
-
-        var allcookies = document.cookie;
-        function getCookie(cookie_name) {
-            var value = "";
-            var allcookies = document.cookie;
-            var cookie_pos = allcookies.indexOf(cookie_name);   //索引的长度
-            // 如果找到了索引，就代表cookie存在，
-            // 反之，就说明不存在。
-            if (cookie_pos != -1) {
-                // 把cookie_pos放在值的开始，只要给值加1即可。
-                cookie_pos += cookie_name.length + 1;      //这里我自己试过，容易出问题，所以请大家参考的时候自己好好研究一下。。。
-                var cookie_end = allcookies.indexOf(";", cookie_pos);
-                if (cookie_end == -1) {
-                    cookie_end = allcookies.length;
-                }
-                value = unescape(allcookies.substring(cookie_pos, cookie_end)); //这里就可以得到你想要的cookie的值了。。。
-            }
-            return value;
-        }
     </script>
 
     <link rel="stylesheet" href="/static/front/css/index.css" />
@@ -73,13 +32,12 @@
     <div class="g-wrap">
         <img src="/static/front/images/logo.png" height="48px">
         <ul id="nav">
-            <li class="n1"><a href="#"><span>首页</span><span class="bkg"></span></a></li>
-            <li class="n2 more"><a href="#"><span>走进冠亚</span><span class="bkg"></span></a></li>
-            <li class="n3 more"><a href="#"><span>新闻中心</span></span><span class="bkg"></span></a></li>
+            <li class="n1"><a href="/front/index.do"><span>首页</span><span class="bkg"></span></a></li>
+            <li class="n2 more"><a href="/front/into.do" target="_blank"><span>走进冠亚</span><span class="bkg"></span></a></li>
+            <li class="n3 more"><a href="/front/newsList.do" target="_blank"><span>新闻中心</span></span><span class="bkg"></span></a></li>
             <li class="n4 "><a href="#"><span>企业文化</span><span class="bkg"></span></a></li>
             <li class="n5 "><a href="#"><span>项目展示</span><span class="bkg"></span></a></li>
             <li class="n6 more"><a href="#"><span>招聘频道</span><span class="bkg"></span></a></li>
-
         </ul>
 
     </div>
@@ -89,13 +47,15 @@
     <div id="subNav">
         <div class="g-wrap">
             <div class="item about">
-                <a href="#">董事长致辞<span></a>
-                <a href="#">公司荣誉<span></a>
-                <a href="#">成员企业<span></a>
-                <a href="#">大事纪要<span></a>
+                <a href="/front/into.do" target="_blank">董事长致辞<span></a>
+                <a href="/front/into.do" target="_blank">公司荣誉<span></a>
+                <a href="/front/into.do" target="_blank">成员企业<span></a>
+                <a href="/front/into.do" target="_blank">大事纪要<span></a>
             </div>
             <div class="item news">
-                <a href="#">新闻内容<span></a>
+                <#list typeList as type>
+                    <a href="/front/newsList.do?id=${type.id}" target="_blank">${type.name}<span></a>
+                </#list>
             </div>
             <div class="item citizenship">
                 <a href="#">招聘公司<span></a>
@@ -149,7 +109,7 @@
     <div class="redian">
         <div class="r-wrap">
             <div class="caifu">
-                <a href="#">
+                <a href="/front/newsDetail.do?id=${specialNews.id}" target="_blank">
                     <h1>${specialNews.title}</h1>
                     <p class="focus-content">
                         ${specialNews.content}
@@ -171,7 +131,7 @@
                     </#if>
                         <#list newsList as news>
                             <#if type.name == news.typeName>
-                                <a href="#">
+                                <a href="/front/newsDetail.do?id=${news.id}" target="_blank">
                                     <p><i>${news.createTimeStr}</i>${news.title}</p>
                                 </a>
                             </#if>
@@ -256,7 +216,7 @@
             </dl>
         </div>
     </div>
-
+</div>
     <div id="footer">
         <a href="websitemap.aspx" target="_blank">站点地图</a><img src="/static/front/images/footerline.gif" alt="">
         <a href="#" onclick="openwin()">法律声明</a><img src="/static/front/images/footerline.gif" alt="">
@@ -275,12 +235,5 @@
         冠亚集团版权所有copyright © 2018<br>
     </div>
 
-
-<div style="display: none">
-    <script type="text/javascript">
-        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cspan id='cnzz_stat_icon_1254929906'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1254929906' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-</div>
 </body>
 </html>

@@ -60,5 +60,13 @@ public class FrontIndexController {
         return modelAndView;
     }
 
-
+    @GetMapping("/front/into.do")
+    public ModelAndView into(){
+        ModelAndView modelAndView = new ModelAndView("front/into");
+        Type type = new Type();
+        type.setSort("新闻");
+        List<Type> typeList = typeService.findAllType(1,10,type);
+        modelAndView.addObject("typeList",typeList);//新闻类别
+        return modelAndView;
+    }
 }

@@ -15,4 +15,6 @@ public interface NewsService {
      * @return
      */
     List<News> selectByTypeThree();
+
+    News selectByPrimaryKey(Integer id);
 }

@@ -38,6 +38,10 @@ public class News {
 
     private String createTimeStr;
 
+    private String createTimeShort1;
+
+    private String createTimeShort2;
+
     public Integer getId() {
         return id;
     }
@@ -148,11 +152,22 @@ public class News {
         }else{
             return "";
         }
-
     }
 
-    public void setCreateTimeStr(String createTimeStr) {
-        this.createTimeStr = createTimeStr;
+    public String getCreateTimeShort1() {
+        if(null != getCreateTime()){
+            return CommonDateParseUtil.date2string(getCreateTime(),"yyyy.MM");
+        }else{
+            return "";
+        }
+    }
+
+    public String getCreateTimeShort2() {
+        if(null != getCreateTime()){
+            return CommonDateParseUtil.date2string(getCreateTime(),"dd");
+        }else{
+            return "";
+        }
     }
 
     public String getFocus() {
