@@ -1,7 +1,4 @@
-﻿@font-face {font-family:"novecento"; src:url("../font/novecento_widebook.eot");}
-@font-face {font-family:"novecento"; src:url("../font/novecento_widebook.ttf");}
- @font-face { font-family: 'dincond-medium-webfont'; src: url('../font/dincond-medium-webfont.eot'); src: url('../font/dincond-medium-webfont.eot?#iefix') format('embedded-opentype'), url('../font/dincond-medium-webfont.woff2') format('woff2'), url('../font/dincond-medium-webfont.woff') format('woff'), url('../font/dincond-medium-webfont.ttf') format('truetype'), url('../font/dincond-medium-webfont.svg#novecentowide-bold-webfont') format('svg'); }
-html, body, div, span, applet, object, iframe, h1, h2, h3,
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3,
 h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
 big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li,

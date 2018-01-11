@@ -69,7 +69,7 @@
         <ul id="nav">
             <li class="n1"><a href="/front/index.do"><span>首页</span><span class="bkg"></span></a></li>
             <li class="n2 more"><a href="/front/into.do" target="_blank"><span>走进冠亚</span><span class="bkg"></span></a></li>
-            <li class="n3 more"><a href="/front/newsList.do" target="_blank"><span>新闻中心</span></span><span class="bkg"></span></a></li>
+            <li class="n3 more"><a href="/front/newsCenter.do" target="_blank"><span>新闻中心</span></span><span class="bkg"></span></a></li>
             <li class="n4 "><a href="#"><span>企业文化</span><span class="bkg"></span></a></li>
             <li class="n5 "><a href="#"><span>项目展示</span><span class="bkg"></span></a></li>
             <li class="n6 more"><a href="#"><span>招聘频道</span><span class="bkg"></span></a></li>

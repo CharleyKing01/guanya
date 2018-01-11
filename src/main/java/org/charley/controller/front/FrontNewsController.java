@@ -51,4 +51,14 @@ public class FrontNewsController {
         modelAndView.addObject("news",news);//新闻
         return modelAndView;
     }
+
+    @GetMapping("/front/newsCenter.do")
+    public ModelAndView newsCenter(){
+        ModelAndView modelAndView = new ModelAndView("front/newsCenter");
+        Type type = new Type();
+        type.setSort("新闻");
+        List<Type> typeList = typeService.findAllType(1,10,type);
+        modelAndView.addObject("typeList",typeList);//新闻类别
+        return modelAndView;
+    }
 }
