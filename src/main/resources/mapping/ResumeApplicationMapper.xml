@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.charley.mapper.ResumeApplicationMapper" >
+  <resultMap id="BaseResultMap" type="org.charley.model.ResumeApplication" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="born_year" property="bornYear" jdbcType="INTEGER" />
+    <result column="born_month" property="bornMonth" jdbcType="INTEGER" />
+    <result column="born_day" property="bornDay" jdbcType="INTEGER" />
+    <result column="e_mail" property="eMail" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="work_years" property="workYears" jdbcType="INTEGER" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_id, dept_id, role_id, name, sex, born_year, born_month, born_day, e_mail,
+    education, profession, work_years, tel, address, description
+  </sql>
+  <select id="selectAllResumeApplication" resultMap="BaseResultMap" parameterType="org.charley.model.ResumeApplication">
+    select
+    <include refid="Base_Column_List" />
+    from recruitment
+    WHERE 1=1
+    <if test="roleId != null" >
+      AND role_id = #{roleId,jdbcType=INTEGER}
+    </if>
+    <if test="deptId != null" >
+      AND dept_id = #{deptId,jdbcType=VARCHAR}
+    </if>
+    ORDER BY id DESC
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from resume_application
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resume_application
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.charley.model.ResumeApplication" >
+    insert into resume_application (id, company_id, dept_id,
+      role_id, name, sex, born_year,
+      born_month, born_day, e_mail,
+      education, profession, work_years,
+      tel, address, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER},
+      #{roleId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{bornYear,jdbcType=INTEGER},
+      #{bornMonth,jdbcType=INTEGER}, #{bornDay,jdbcType=INTEGER}, #{eMail,jdbcType=VARCHAR},
+      #{education,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, #{workYears,jdbcType=INTEGER},
+      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.charley.model.ResumeApplication" >
+    insert into resume_application
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="bornYear != null" >
+        born_year,
+      </if>
+      <if test="bornMonth != null" >
+        born_month,
+      </if>
+      <if test="bornDay != null" >
+        born_day,
+      </if>
+      <if test="eMail != null" >
+        e_mail,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="workYears != null" >
+        work_years,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="bornYear != null" >
+        #{bornYear,jdbcType=INTEGER},
+      </if>
+      <if test="bornMonth != null" >
+        #{bornMonth,jdbcType=INTEGER},
+      </if>
+      <if test="bornDay != null" >
+        #{bornDay,jdbcType=INTEGER},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="workYears != null" >
+        #{workYears,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.charley.model.ResumeApplication" >
+    update resume_application
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="bornYear != null" >
+        born_year = #{bornYear,jdbcType=INTEGER},
+      </if>
+      <if test="bornMonth != null" >
+        born_month = #{bornMonth,jdbcType=INTEGER},
+      </if>
+      <if test="bornDay != null" >
+        born_day = #{bornDay,jdbcType=INTEGER},
+      </if>
+      <if test="eMail != null" >
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="workYears != null" >
+        work_years = #{workYears,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.charley.model.ResumeApplication" >
+    update resume_application
+    set company_id = #{companyId,jdbcType=INTEGER},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      born_year = #{bornYear,jdbcType=INTEGER},
+      born_month = #{bornMonth,jdbcType=INTEGER},
+      born_day = #{bornDay,jdbcType=INTEGER},
+      e_mail = #{eMail,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      work_years = #{workYears,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
