@@ -96,19 +96,36 @@
                 </div>
                 <div class="com_con">
                     <div class="left animated delay0d1s fadeIn">
-                        <div class="first_n"><div class="date">20171023</div><div class="title"><a href="news.aspx?tags=1&amp;newsid=21388">央企首单！保利租赁住房REITs成功获批，住房租赁...</a></div><div class="desc">2017年10月23日，国内首单央企租赁住房REITs、首单储架发行REITs——中联前海开源-保利地产租赁住房一号资产支持专项计划（下称“保利租赁住房REITs”）获得上海证券交易所审...</div></div><ul>  <li><a href="news.aspx?tags=1&amp;newsid=21179">展位售罄 | CR Expo 2017观众预...<span>2017.05.05</span></a></li>  <li><a href="news.aspx?tags=1&amp;newsid=21163">喜讯│保利地产获第八届天马奖“投资者关系最佳...<span>2017.05.03</span></a></li>  <li><a href="news.aspx?tags=1&amp;newsid=21162">喜讯│保利地产获全景网“全景投资者关系金奖”<span>2017.05.03</span></a></li>  <li><a href="news.aspx?tags=1&amp;newsid=21154">新高度 新飞跃 新启程 ——第35届锦汉家居...<span>2017.04.25</span></a></li>  <li><a href="news.aspx?tags=1&amp;newsid=21110">送孩子一双翅膀，与保利和乐教育一起两翼启航—...<span>2017.02.22</span></a></li></ul>
+                        <div class="com_con_advisory">
+                        咨询快递
+                    </div>
+                        <div class="first_n">
+                            <div class="desc">
+                                <marquee direction="up" >
+                                ${advisoryNews.content}
+                                </marquee>
+                            </div>
+                        </div>
                     </div>
                     <div class="center  animated delay0d3s fadeIn">
-                        <div class="part1 public_mian">
-                            <div class="public_play" style="opacity: 0.8; display: none;">
-                                <a href="news.aspx?tags=2">
-                                    <img src="/static/front/images/s.png" style="opacity: 1; display: none;"></a>
-                            </div>
-                            <a href="news.aspx?tags=2">
-                                <img src="/static/front/images/pic2.png"></a>
-                        </div>
                         <div class="part2">
-                            <div class="first_n"><div class="date">20160621</div><div class="title"><a href="news.aspx?tags=2&amp;newsid=20923">保利地产首席市场分析师吴定金受邀为兰州房...</a></div><div class="desc">为深刻认识全国房地产发展形势、掌握兰州市房地产发展...</div></div><ul>  <li><span>2015.12.16</span><a href="news.aspx?tags=2&amp;newsid=20798">多元创新，大连国际会议中心获“中国十佳会...</a></li>  <li><span>2015.12.04</span><a href="news.aspx?tags=2&amp;newsid=20796">集团公司总经理张振高一行赴郑州公司视察工...</a></li></ul>
+                            <div class="first_n">
+                                <div class="date">20160621</div>
+                                <div class="title">
+                                    <a href="news.aspx?tags=2&amp;newsid=20923">保利地产首席市场分析师吴定金受邀为兰州房...</a>
+                                </div>
+                                <div class="desc">为深刻认识全国房地产发展形势、掌握兰州市房地产发展...</div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <span>2015.12.16</span>
+                                    <a href="news.aspx?tags=2&amp;newsid=20798">多元创新，大连国际会议中心获“中国十佳会...</a>
+                                </li>
+                                <li>
+                                    <span>2015.12.04</span>
+                                    <a href="news.aspx?tags=2&amp;newsid=20796">集团公司总经理张振高一行赴郑州公司视察工...</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="right  animated delay0d5s fadeIn">

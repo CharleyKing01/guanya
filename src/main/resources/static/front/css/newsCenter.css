@@ -22,17 +22,17 @@
 .main-content .Comprehensive .com_con { overflow: hidden; padding: 60px 0 50px; }
 
 .main-content .Comprehensive .com_con .left {
-    background: none repeat scroll 0 0 #cfd7e2;
+    background: none repeat scroll 0 0 #4c4f5f;
     float: left;
     padding: 22px 20px;
-    width: 364px;
-    height: 273px;
+    width: 240px;
+    height: 243px;
     overflow: hidden;
 }
 
 .main-content .Comprehensive .com_con .center {
     float: left;
-    width: 378px;
+    width: 500px;
     background: #374F9D;
     float: left;
 }
@@ -58,7 +58,7 @@
 }
 
 .main-content .Comprehensive .com_con .left .first_n .desc {
-    color: #585c61;
+    color: #F9F9F9;
     line-height: 20px;
 }
 
@@ -128,12 +128,10 @@ li {
 }
 
 .main-content .Comprehensive .com_con .center .part2 {
-    height: 143px;
-}
-
-.main-content .Comprehensive .com_con .center .part2 {
+    height: 303px;
     padding: 12px 20px;
 }
+
 
 li {
     display: list-item;
@@ -151,3 +149,9 @@ li {
 
 .public_play a img{ top:50%; left:50%; position:absolute; padding:20px; margin-left:-34.5px; margin-top:-35px; display:none;  background-color: #FFF; }
 
+.com_con_advisory{
+    color: #fff;
+    font-family: Novecento , Arial;
+    font-size: 23px;
+    margin-bottom: 15px;
+}

@@ -105,7 +105,8 @@
             $('#author').textbox('setValue',selectRow.author);
             $('#content').textbox('setValue',selectRow.content);
             $('#keywords').textbox('setValue',selectRow.keywords);
-            $('#focus').textbox('setValue',selectRow.focus);
+            $('#focus').combobox('setValue',selectRow.focus);
+            $('#advisory').combobox('setValue',selectRow.advisory);
 
             $('#ff').attr("action", "/sys/news/update-data.do");
             $('#dlg').dialog('open').dialog("setTitle", "修改新闻");
@@ -135,6 +136,7 @@
         <th data-options="field:'author',width:110, align:'center'">作者</th>
         <th data-options="field:'content',width:110, align:'center'">内容</th>
         <th data-options="field:'focus',width:110, align:'center' ,formatter: focusFormatter">聚焦新闻</th>
+        <th data-options="field:'advisory',width:110, align:'center' ,formatter: focusFormatter">咨询快递</th>
         <th data-options="field:'keywords',width:110, align:'center'">关键字</th>
     </tr>
     </thead>
@@ -183,6 +185,15 @@
                 <td style="line-height: 40px">聚焦新闻:</td>
                 <td>
                     <select class="easyui-combobox" style="width:650px;" id="focus" name="focus">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="line-height: 40px">咨询快递:</td>
+                <td>
+                    <select class="easyui-combobox" style="width:650px;" id="advisory" name="advisory">
                         <option value="0">否</option>
                         <option value="1">是</option>
                     </select>

@@ -59,6 +59,11 @@ public class FrontNewsController {
         type.setSort("新闻");
         List<Type> typeList = typeService.findAllType(1,10,type);
         modelAndView.addObject("typeList",typeList);//新闻类别
+        News news = new News();
+        news.setAdvisory(Constants.STRING_YES);
+        List<News> advisoryNewsList = newsService.findAllNews(1,10,news);
+        News advisoryNews = advisoryNewsList.get(0);
+        modelAndView.addObject("advisoryNews",advisoryNews);
         return modelAndView;
     }
 }

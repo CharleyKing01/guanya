@@ -31,6 +31,8 @@ public class News {
 
     private String focus;
 
+    private String advisory;
+
     /**
      *  临时属性
      */
@@ -176,5 +178,13 @@ public class News {
 
     public void setFocus(String focus) {
         this.focus = focus;
+    }
+
+    public String getAdvisory() {
+        return advisory;
+    }
+
+    public void setAdvisory(String advisory) {
+        this.advisory = advisory;
     }
 }

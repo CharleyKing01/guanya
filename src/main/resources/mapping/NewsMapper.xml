@@ -7,6 +7,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="focus" property="focus" jdbcType="CHAR" />
+    <result column="advisory" property="advisory" jdbcType="CHAR" />
     <result column="keywords" property="keywords" jdbcType="VARCHAR" />
     <result column="publish_user" property="publishUser" jdbcType="VARCHAR" />
     <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
@@ -19,7 +20,7 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, type, title,focus, author, keywords, publish_user, publish_time, create_user, create_time,
+    id, type, title,focus,advisory, author, keywords, publish_user, publish_time, create_user, create_time,
     update_user, update_time
   </sql>
   <sql id="Blob_Column_List" >
@@ -27,7 +28,7 @@
   </sql>
   <select id="selectAllNews" resultMap="BaseResultMap" parameterType="org.charley.model.News">
     select
-    a.id, a.type, a.title,focus, a.author,a.content, a.keywords, a.publish_user, a.publish_time, a.create_user, a.create_time,
+    a.id, a.type, a.title,focus,advisory, a.author,a.content, a.keywords, a.publish_user, a.publish_time, a.create_user, a.create_time,
     a.update_user, a.update_time,b.name AS typeName
     from news a LEFT JOIN type b ON a.type = b.id
     WHERE 1=1
@@ -42,6 +43,9 @@
     </if>
     <if test="focus != null" >
       AND a.focus = #{focus,jdbcType=CHAR}
+    </if>
+    <if test="advisory != null" >
+      AND a.advisory = #{advisory,jdbcType=CHAR}
     </if>
     ORDER BY a.id DESC
   </select>
@@ -79,13 +83,13 @@
     insert into news (id, type, title, 
       author, keywords, publish_user, 
       publish_time, create_user, create_time, 
-      update_user, update_time, content,focus
+      update_user, update_time, content,focus,advisory
       )
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
       #{author,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{publishUser,jdbcType=VARCHAR}, 
       #{publishTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR},
-      #{focus,jdbcType=CHAR}
+      #{focus,jdbcType=CHAR},#{advisory,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.charley.model.News" >
@@ -130,6 +134,9 @@
       <if test="focus != null" >
         focus,
       </if>
+      <if test="advisory != null" >
+        advisory,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -170,6 +177,9 @@
       </if>
       <if test="focus != null" >
         #{focus,jdbcType=CHAR},
+      </if>
+      <if test="advisory != null" >
+        #{advisory,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -212,6 +222,9 @@
       <if test="focus != null" >
         focus = #{content,jdbcType=CHAR},
       </if>
+      <if test="advisory != null" >
+        advisory = #{advisory,jdbcType=CHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -228,7 +241,8 @@
       update_user = #{updateUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR},
-      focus = #{focus,jdbcType=CHAR}
+      focus = #{focus,jdbcType=CHAR},
+      advisory = #{advisory,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.charley.model.News" >
@@ -244,7 +258,8 @@
       update_user = #{updateUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=VARCHAR},
-      focus = #{focus,jdbcType=CHAR}
+      focus = #{focus,jdbcType=CHAR},
+      advisory = #{advisory,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
